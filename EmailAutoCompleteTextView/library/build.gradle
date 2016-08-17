@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+
+android {
+    publishNonDefault true
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion 8
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    dexOptions {
+        preDexLibraries = !rootProject.ext.ci
+    }
+
+    productFlavors {
+        platform {
+        }
+        design {
+        }
+    }
+
+    lintOptions {
+        abortOnError true
+        textReport true
+        textOutput 'stdout'
+
+        fatal 'UnusedResources'
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:23.1.1'
+
+    designCompile 'com.android.support:design:23.1.1'
+}
+
+apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

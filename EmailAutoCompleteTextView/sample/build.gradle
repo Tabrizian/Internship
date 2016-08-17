@@ -1,0 +1,20 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.tasomaniac.widget.emailautocompletetextview.sample"
+        minSdkVersion 14
+        targetSdkVersion rootProject.ext.compileSdkVersion
+        versionCode 1
+        versionName "$VERSION_NAME"
+    }
+}
+
+dependencies {
+    compile project(path: ':library', configuration: 'designRelease')
+
+    compile 'com.android.support:appcompat-v7:23.1.1'
+}
